@@ -1,0 +1,15 @@
+{
+  "execMap": {
+    "ts": "ts-node --esm"
+  },
+  "ignore": [
+     ".git",
+    "node_modules/",
+    "dist/",
+    "coverage/"
+  ],
+  "watch":[
+    "src/*"
+  ],
+  "ext": "js,ts,json"
+}

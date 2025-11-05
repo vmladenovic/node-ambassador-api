@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "module": "NodeNext", // Crucial for Node v16+
+    "moduleResolution": "Node",
+    "target": "ESNext",
+    "allowImportingTsExtensions": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  },
+  "ts-node": {
+    "esm": true // This is the key setting for ts-node
+  }
+}
