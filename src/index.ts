@@ -34,6 +34,7 @@ AppDataSource
         app.use(express.json());
         app.use(cors({
             origin: ['http://localhost:3000'],
+            credentials: true, // Crucial: Allow sending and receiving cookies/credentials
         }));
 
         routes(app);
