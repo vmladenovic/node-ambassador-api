@@ -1,4 +1,13 @@
-import {Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn} from "typeorm";
+import {
+    AfterLoad,
+    Column,
+    CreateDateColumn,
+    Entity,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn
+} from "typeorm";
 import {OrderItem} from "./order_item.entity.ts";
 import {Link} from "./link.entity.ts";
 
@@ -56,6 +65,14 @@ export class Order {
     })
     @JoinColumn({name: 'code', referencedColumnName: 'code'}) // ne kreiramo foreign key vec koristimo postojecu kolonu code kao vezu za link
     link: Link;
+
+    orderTotal: number;
+
+    // a trick to expose Getter to the API response
+    @AfterLoad()
+    setOrderTotal() {
+        this.orderTotal = this.total;
+    }
 
     get name() : string {
         return `${this.first_name} ${this.last_name}`

@@ -56,7 +56,7 @@ export async function ProductsBackend(req: Request, res: Response) {
         products.sort((a, b) => req.query.sort === 'asc' ? a.price - b.price : b.price-a.price);
     }
 
-    const page: number = parseInt(String(req.query.page) ?? '1');
+    const page: number = parseInt(String(req.query.page ?? '1')); console.log({page, products});
     const perPage = 9;
     const total = products.length;
 
