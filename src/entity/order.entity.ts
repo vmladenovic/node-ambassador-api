@@ -79,10 +79,10 @@ export class Order {
     }
 
     get total(): number {
-        return this.order_items.reduce((sum, item) => sum + item.admin_revenue, 0);
+        return this.order_items?.reduce((sum, item) => sum + item.admin_revenue, 0) ?? 0;
     }
 
     get ambassador_revenue(): number {
-        return this.order_items.reduce((sum, item) => sum + item.ambassador_revenue, 0);
+        return this.order_items?.reduce((sum, item) => sum + item.ambassador_revenue, 0) ?? 0;
     }
 }

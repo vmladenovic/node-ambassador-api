@@ -69,8 +69,8 @@ export async function CreateOrder(req: Request, res: Response) {
             orderItem.product_title = product.title;
             orderItem.price = product.price;
             orderItem.quantity = p.quantity;
-            orderItem.ambassador_revenue = product.price * p.quantity * 0.1; // 10% goes to the ambasador
-            orderItem.admin_revenue = product.price * p.quantity * 0.9; // 90% goes to the ambasador
+            orderItem.ambassador_revenue = product.price * p.quantity * 0.1; // 10% goes to the ambassador
+            orderItem.admin_revenue = product.price * p.quantity * 0.9; // 90% goes to the ambassador
 
             await queryRunner.manager.save(orderItem);
 
@@ -94,7 +94,7 @@ export async function CreateOrder(req: Request, res: Response) {
             line_items,
             mode: 'payment',
             success_url: `${process.env.CHECKOUT_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: process.env.CHECKOUT_URL,
+            cancel_url: `${process.env.CHECKOUT_URL}/error`,
         })
 
         await queryRunner.commitTransaction();
